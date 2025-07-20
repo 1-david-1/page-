@@ -4,7 +4,7 @@ name: Deploy static content to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ['production']
+    branches: ['main', 'production']
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -40,7 +40,9 @@ jobs:
       - name: Build
         run: npm run build
       - name: Copy CNAME to dist
-        run: cp CNAME dist/ || echo "plansec.inbox-elevate.de" > dist/CNAME
+        run: |
+          mkdir -p dist
+          echo "plansec.inbox-elevate.de" > dist/CNAME
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact

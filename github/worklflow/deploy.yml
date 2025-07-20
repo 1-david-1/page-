@@ -40,8 +40,6 @@ jobs:
       - name: Build
         run: npm run build
       - name: Copy CNAME to dist
-        run: echo "plansec.inbox-elevate.de" > dist/CNAME
-      - name: Copy CNAME to dist
         run: cp CNAME dist/ || echo "plansec.inbox-elevate.de" > dist/CNAME
       - name: Setup Pages
         uses: actions/configure-pages@v4
